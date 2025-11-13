@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>???</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 90%;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .heart {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background-color: #ff4d6d;
+            transform: rotate(45deg);
+            animation: float 5s infinite ease-in-out;
+        }
+
+        .heart:before, .heart:after {
+            content: '';
+            width: 30px;
+            height: 30px;
+            background-color: #ff4d6d;
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .heart:before {
+            top: -15px;
+            left: 0;
+        }
+
+        .heart:after {
+            top: 0;
+            left: -15px;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(45deg); }
+            50% { transform: translateY(-20px) rotate(45deg); }
+        }
+
+        h1 {
+            color: #ff4d6d;
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .message {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            color: #555;
+        }
+
+        .photo-placeholder {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 30px;
+            border-radius: 50%;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            border: 5px solid #ff4d6d;
+        }
+
+        .photo-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .btn {
+            background-color: #ff4d6d;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(255, 77, 109, 0.3);
+        }
+
+        .btn:hover {
+            background-color: #ff3355;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(255, 77, 109, 0.4);
+        }
+
+        .hidden-message {
+            display: none;
+            margin-top: 30px;
+            padding: 20px;
+            background-color: rgba(255, 77, 109, 0.1);
+            border-radius: 10px;
+            animation: fadeIn 1s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .footer {
+            margin-top: 30px;
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .message {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Плавающие сердечки -->
+        <div class="heart" style="top: 10%; left: 5%; animation-delay: 0s;"></div>
+        <div class="heart" style="top: 20%; right: 10%; animation-delay: 1s;"></div>
+        <div class="heart" style="bottom: 15%; left: 15%; animation-delay: 2s;"></div>
+        <div class="heart" style="bottom: 25%; right: 5%; animation-delay: 3s;"></div>
+        
+        <h1>Для любимой катеньки...</h1>
+        
+        <div class="photo-placeholder">
+            <!-- Замените src на фото вашей девушки -->
+            <img src="./love.jpg" alt="Фото">
+        </div>
+        
+        <div class="message">
+            <p>Каждый раз, когда я вижу твою улыбку, мне становится лучше, даже если у меня все плохо.</p>
+            <p>Ты - самое прекрасное, что случилось со мной, и я благодарен судьбе за каждый момент, проведенный с тобой.</p>
+            <p>Ты вдохновляешь меня становиться лучше каждый день. Я искренне стараюсь быть лучше для тебя</p>
+        </div>
+        
+        <button class="btn" id="revealBtn">Нажми, чтобы узнать больше</button>
+        
+        <div class="hidden-message" id="hiddenMessage">
+            <h2>Я тебя очень люблю</h2>
+            <p>Люблю тебя за твою доброту, за твой смех, за то, как ты заботишься обо мне.</p>
+            <p>Люблю тебя за твою силу и нежность, за ум и чувство юмора.</p>
+            <p>Но больше всего я люблю тебя просто за то, что ты есть.</p>
+            <p>И я обещаю всегда быть рядом с тобой, поддерживать тебя и делать всё, чтобы ты была счастлива и никогда не плакала</p>
+            <p style="margin-top: 15px; font-weight: bold; color: #ff4d6d;">Я люблю тебя больше, чем может показать даже самый сложный код!</p>
+        </div>
+        
+        <div class="footer">
+            Создано егором с любовью для тебя
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('revealBtn').addEventListener('click', function() {
+            const hiddenMessage = document.getElementById('hiddenMessage');
+            hiddenMessage.style.display = 'block';
+            this.style.display = 'none';
+            
+            // Добавляем дополнительные сердечки при нажатии
+            for (let i = 0; i < 5; i++) {
+                setTimeout(() => {
+                    createHeart();
+                }, i * 300);
+            }
+        });
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.style.left = Math.random() * 90 + 5 + '%';
+            heart.style.top = Math.random() * 90 + 5 + '%';
+            heart.style.animationDelay = Math.random() * 5 + 's';
+            document.querySelector('.container').appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
